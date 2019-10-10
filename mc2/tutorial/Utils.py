@@ -269,7 +269,8 @@ def scp(file, dest_ip, dest_dir):
     process = subprocess.Popen(
         cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     for line in iter(process.stdout.readline, b''):
-        if line[:6] != "debug1":
+        line = line.decode("utf-8")
+        if "debug1" not in line:
             sys.stdout.write(line)
 
 
