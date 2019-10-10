@@ -269,7 +269,8 @@ def scp(file, dest_ip, dest_dir):
     process = subprocess.Popen(
         cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     for line in iter(process.stdout.readline, b''):
-        sys.stdout.write(line)
+        if line[:6] != "debug1":
+            sys.stdout.write(line)
 
 
 def network_analysis(master, worker_1, worker_2, worker_3):
