@@ -171,7 +171,7 @@ class Federation:
             print(str(e))
             return None
 
-    def save_party_id(self, aggregator_name, username):
+    def save_party_id(self, username, aggregator_name):
         try:
             party_id = self.get_federation_member_id(aggregator_name, username)
             user = os.environ["NB_USER"]
